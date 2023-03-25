@@ -18,3 +18,15 @@
 
   - name: Deploy Docker Container
     command: docker run -itd -p 8084:8081 niladrimondaldcr/insuremestaragile:4.0
+  
+  - name: Copy file with owner and permission, using symbolic representation
+    ansible.builtin.copy:
+      src: ./selenium-insure-me.jar
+      dest: /home/ubuntu/selenium-insure-me.jar
+      owner: ubuntu
+      group: ubuntu
+      mode: u=rw,g=r,o=r
+  - name : run selenium jar
+    command : java -jar /home/ubuntu/selenium-insure-me.jar
+    become : yes
+    become_user : ubuntu
