@@ -17,7 +17,7 @@
     become_user : root
   
   - name: Stop Existing running Container
-    command: docker stop $(docker ps -q)
+    command: docker kill $(docker ps -q)
 
   - name: Remove Existing  Container
     command: docker rm $(docker ps -aq)
