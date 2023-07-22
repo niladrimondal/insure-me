@@ -17,10 +17,10 @@
     become_user : root
   
   - name: Stop Existing running Container
-    command: docker stop $(docker ps -a -q)
+    command: docker stop $(docker ps -aq)
 
   - name: Remove Existing  Container
-    command: docker rm $(docker ps -a -q)
+    command: docker rm $(docker ps -aq)
 
   - name: Deploy Docker Container
     command: docker run -itd -p 8084:8081 niladrimondaldcr/insureme:3.0
