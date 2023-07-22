@@ -17,9 +17,9 @@
     become_user : root
   
   - name: Stop the http_server1 container
-      docker_container:
-        name: insureme
-        state: stopped
+    docker_container:
+      name: insureme
+      state: stopped
 
   - name: Remove Existing  Container
     command: docker rm insureme
