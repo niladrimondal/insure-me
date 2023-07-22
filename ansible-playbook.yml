@@ -16,11 +16,13 @@
     become : yes
     become_user : root
   
-  - name: Stop Existing running Container
-    command: docker kill $(docker ps -q)
+  - name: Stop the http_server1 container
+      docker_container:
+        name: insureme
+        state: stopped
 
   - name: Remove Existing  Container
-    command: docker rm $(docker ps -aq)
+    command: docker rm insureme
 
   - name: Deploy Docker Container
-    command: docker run -itd -p 8084:8081 niladrimondaldcr/insureme:3.0
+    command: docker run --name insureme -itd -p 8084:8081 niladrimondaldcr/insureme:3.0
